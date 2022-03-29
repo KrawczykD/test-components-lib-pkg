@@ -1,3 +1,1 @@
-export declare namespace vuelib {}
-
-export declare const boButtonL: any;
+import '../dist/libraryentrypoint';
