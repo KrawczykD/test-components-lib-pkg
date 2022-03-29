@@ -3,10 +3,9 @@
   "libraryName": "vuelib",
   "version": "0.0.3",
   "files": [
-    "types",
     "dist"
   ],
-  "types": "./types/main.d.ts",
+  "types": "./dist/libraryentrypoint.d.ts",
   "main": "./dist/vuelib.umd.js",
   "module": "./dist/vuelib.es.js",
   "exports": {
