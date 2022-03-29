@@ -13,6 +13,11 @@ This tamplete repo is build with using vue3 sfc with setup script component exam
 1. Clone the Repostory using
    [Github Desktop](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop)
 2. Run `npm i` or `npm install` to install npm's mentioned in [package.json](package.json)
+3. edit [.npmrc](.npmrc) to your git name.
+4. edit  [package.json](package.json)
+   - name of package (that needs to be your @githubName/repoName )
+   - library name , this will be your global library namespace after include script
+5. Change claudinary settings file in gulpt task and replace with your claudianry credentials
 
 ## Story Book Testing
 
@@ -28,13 +33,15 @@ This tamplete repo is build with using vue3 sfc with setup script component exam
 
 - [storybook] - Run storybook server pn localhost:6006
 - [storybook:build] - Run storybook build process
-- [build:lib] - Bilding library in to ./library
-- [uploadLibToClaudinary] - Uploading ./library current version
+- [build:lib] - Bilding library in to ./dist
+- [build:pkg] - Bilding package in to ./dist
+- [uploadLibToClaudinary] - Uploading ./dist current version
 - [versionUpdate] - update version.ts file base on package.json version number
 - [deleteLibFromClaudinary] - delete library from caludinary , deleted version can't be current version. To delete version use format '--bv x.x.x'
 - [getLatestLibraryVersion] - display lastest updated library with url link
-- [deploy:lib] - !Important run this command only when want deploy new library to claudinary and alwayst with npm version. This script check library , add github tag with new version, push bump verion
-  commit and upload library to claudinary
+- [deploy:lib] - !Important run this command only when want deploy new library to claudinary.
+- [deploy:pkg] - !Important run this command only when want deploy new packages to github packages.
+- [preversion] - Hapens after version patch, update version.ts file , create bump version commit and sent github tags.
 - [tailwindWatch] - run tailwind server to watch and compile any css changes.
 - [prettier:check] - run prettier check on all files without modifying
 - [prettier:write] - run prettier and overwrite files
@@ -58,8 +65,20 @@ use Conventional Commits https://www.conventionalcommits.org/en/v1.0.0/ and tool
 
 ## Deploy
 
-## TO-DO
+ ### Library - run deploy:lib to deploy library minify version file in to claudinary
+ ### Packages - run deploy:pkg to publish new package in to github packages , go to github and release new package from github tags.
+ 
+## Install Package from github packages
 
+In your project create file .npmrc in root folder.
+Edit this file with fallowing information
+
+//npm.pkg.github.com/:_authToken=yourauthenticationithubtoken
+@yourgithubaccount:registry=https://npm.pkg.github.com/
+
+
+## TO-DO
+- [ ] Generate types
+- [ ] Import css in to template
 - [ ] remove bootstrap
 - [ ] include testing ( jest/cypress)
-- [ ] setup rollup to clean library folder on build
